@@ -1,12 +1,22 @@
 package com.company.z1;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Client {
     String name;
     String inn;
 
-    public Client(String name, String inn) {
+    public Client(String name, String inn) throws INNException {
         this.name = name;
-        this.inn = inn;
+        Pattern pattern = Pattern.compile("^\\d{10}$");
+        Matcher matcher = pattern.matcher(inn);
+        if(matcher.find()){
+            setInn(inn);
+        }
+        else {
+            throw new INNException("Недействительный ИНН", inn);
+        }
     }
 
     public String getName() {

@@ -14,7 +14,7 @@ public class TestSearch {
         int id1 = 0;
         try {
             id1 = s1.linSearch(name);
-        } catch (NameException e) {
+        } catch (NotFoundException e) {
             e.printStackTrace();
         }
         System.out.println("ID искомого студента в коллекции: " + id1);

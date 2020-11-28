@@ -6,11 +6,11 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class SortingStudentsByID {
-    public ArrayList<Person> idNumber = new ArrayList<>();
+    public ArrayList<Person> personArrayList = new ArrayList<>();
     SortingStudentsByID(ArrayList<Person> tmp) {
         Scanner scan = new Scanner(System.in);
-        this.idNumber = tmp;
-        Collections.sort(idNumber, new Comparator<Person>() {
+        this.personArrayList = tmp;
+        Collections.sort(personArrayList, new Comparator<Person>() {
             @Override
             public int compare(Person o1, Person o2) {
                 return o1.getId() - o2.getId();
@@ -18,7 +18,7 @@ public class SortingStudentsByID {
         });
 
         System.out.println("Отсортированные по ID:");
-        for (Person student: idNumber){
+        for (Person student: personArrayList){
             System.out.println(student.toString());
         }
     }
