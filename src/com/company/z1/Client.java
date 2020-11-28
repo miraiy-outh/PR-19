@@ -9,14 +9,7 @@ public class Client {
 
     public Client(String name, String inn) throws INNException {
         this.name = name;
-        Pattern pattern = Pattern.compile("^\\d{10}$");
-        Matcher matcher = pattern.matcher(inn);
-        if(matcher.find()){
-            setInn(inn);
-        }
-        else {
-            throw new INNException("Недействительный ИНН", inn);
-        }
+        setInn(inn);
     }
 
     public String getName() {
@@ -31,8 +24,15 @@ public class Client {
         return inn;
     }
 
-    public void setInn(String inn) {
-        this.inn = inn;
+    public void setInn(String inn) throws INNException {
+        Pattern pattern = Pattern.compile("^\\d{10}$");
+        Matcher matcher = pattern.matcher(inn);
+        if(matcher.find()){
+            this.inn = inn;
+        }
+        else {
+            throw new INNException("Недействительный ИНН", inn);
+        }
     }
 
     @Override
